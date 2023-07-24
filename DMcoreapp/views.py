@@ -6899,19 +6899,36 @@ def tl_workprogress_executive_det(request,eid):
     usr = user_registration.objects.get(id=ids)
     # exe=user_registration.objects.filter(department='Digital Marketing Executive',tl_id=ids)
     # exe_ids = [exe.id for exe in exe]
-    prgs=progress_report.objects.filter(user_id=eid).order_by('-id')
+    prgs=progress_report.objects.filter(user_id=eid,status=0).order_by('-id')
     return render(request,'team_lead/tl_workprogress_executive_det.html',{'prgs':prgs,"usr":usr,})
 
 def tl_progress_report(request,pk):
     ids=request.session['userid']
     usr = user_registration.objects.get(id=ids)
     work=progress_report.objects.get(id=pk)
-    sm = Smo_socialmedia.objects.filter(smo_work=work.id,smo_start_date=work.start_date,smo_end_date=work.end_date)
+    sm = Smo_socialmedia.objects.filter(smo_work=work.work.id,smo_start_date=work.start_date,smo_end_date=work.end_date)
     try:
         prv_work=progress_report.objects.filter(work_id=work.id).order_by('-end_date')[0]
     except:
         prv_work=None
     return render(request,'team_lead/tl_progress_report.html',{'work':work,"usr":usr,"prv_work":prv_work,"sm":sm})
+
+def tl_change_progress_count(request):
+    ids=request.session['userid']
+    usr = user_registration.objects.get(id=ids)
+    c_date=date.today()
+    
+    if request.method=="POST":
+        c_count = request.POST.get('cur_count')
+        n_count = request.POST.get('new_count')
+        sid = request.POST.get('sid')
+        s = Smo_socialmedia.objects.get(id=sid)
+        s.smo_count = n_count
+        s.smo_old_count = c_count
+        s.smo_count_change_date = c_date
+        s.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
 
 def tl_flt_progress(request):
     ids=request.session['userid']
@@ -6926,6 +6943,17 @@ def tl_flt_progress(request):
 
     }
     return render(request, 'team_lead/tl_workprogress_executive.html',context)
+
+def tl_week_performance(request,wid):
+    ids=request.session['userid']
+    usr = user_registration.objects.get(id=ids)
+    print(wid)
+    # work=Work.objects.get(id=wid)
+    # ex_name = work_asign.objects.get(work=work).exe_name.fullname
+    wp = perfomance.objects.get(client_work_id=wid)
+    percentage_str = wp.week_perfomance
+    percentage = float(percentage_str.rstrip('%'))
+    return render(request,'team_lead/tl_week_performance.html',{"usr":usr,"wp":wp,"percentage":percentage})
 
 # ----------------------monthly
 

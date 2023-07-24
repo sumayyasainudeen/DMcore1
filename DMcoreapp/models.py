@@ -351,15 +351,7 @@ class daily_leeds(models.Model):
     register = models.CharField(max_length=255,null=True,blank=True,default='')
     ex_duration = models.CharField(max_length=255,null=True,blank=True,default='')
 
-class progress_report(models.Model):
-    work=models.ForeignKey(Work,on_delete=models.CASCADE,null=True,blank=True)
-    user = models.ForeignKey(user_registration, on_delete=models.SET_NULL, null=True, blank=True)
-    cl_name = models.CharField(max_length=200,default='', null=True, blank=True)
-    task=models.TextField(default='', null=True, blank=True)
-    audit_rprt=models.FileField(upload_to='images/pdf/',default='', null=True, blank=True)
-    graph=models.FileField(upload_to='images/graph/',default='', null=True, blank=True)
-    start_date=models.DateField(auto_now_add=False, auto_now=False,  null=True, blank=True)
-    end_date=models.DateField(auto_now_add=False, auto_now=False,  null=True, blank=True)
+
 
     
 class Warning(models.Model):
@@ -590,6 +582,17 @@ class he_daily_work(models.Model):
     json=models.FileField(upload_to = 'images/pdf/', null=True, blank=True,default='')
     json_testerscreenshot = JSONField(blank=True, null=True,default='')
 
+class progress_report(models.Model):
+    work=models.ForeignKey(Work,on_delete=models.CASCADE,null=True,blank=True)
+    user = models.ForeignKey(user_registration, on_delete=models.SET_NULL, null=True, blank=True)
+    cl_name = models.CharField(max_length=200,default='', null=True, blank=True)
+    task=models.TextField(default='', null=True, blank=True)
+    audit_rprt=models.FileField(upload_to='images/pdf/',default='', null=True, blank=True)
+    graph=models.FileField(upload_to='images/graph/',default='', null=True, blank=True)
+    start_date=models.DateField(auto_now_add=False, auto_now=False,  null=True, blank=True)
+    end_date=models.DateField(auto_now_add=False, auto_now=False,  null=True, blank=True)
+    status=models.IntegerField(default=0, null=True, blank=True)
+
 class Smo_socialmedia(models.Model):
     smo_work=models.ForeignKey(Work,on_delete=models.CASCADE,null=True,blank=True)
     smo_user = models.ForeignKey(user_registration, on_delete=models.SET_NULL, null=True, blank=True)
@@ -597,6 +600,19 @@ class Smo_socialmedia(models.Model):
     smo_platform = models.CharField(max_length=200,default='', null=True, blank=True)
     smo_platform_title = models.CharField(max_length=200,default='', null=True, blank=True)
     smo_count=models.IntegerField(default=0, null=True, blank=True)
+    smo_old_count=models.IntegerField(default=0, null=True, blank=True)
+    smo_count_change_date = models.DateField(auto_now_add=False, auto_now=False,  null=True, blank=True)
     smo_files = models.FileField(upload_to='smo_files/')
     smo_start_date=models.DateField(auto_now_add=False, auto_now=False,  null=True, blank=True)
     smo_end_date=models.DateField(auto_now_add=False, auto_now=False,  null=True, blank=True)
+
+class perfomance(models.Model):
+    client_perf_name = models.ForeignKey(client_information, on_delete=models.CASCADE, null=True, blank=True) 
+    client_work=models.ForeignKey(Work,on_delete=models.CASCADE,null=True,blank=True)   
+    pref_exe_name=models.ForeignKey(user_registration, on_delete=models.CASCADE,related_name='pfromance_exe',null=True, blank=True)
+    tl_id=models.ForeignKey(user_registration, on_delete=models.CASCADE,related_name='pfromance_tl',null=True, blank=True)
+    previous_week=models.IntegerField(default=0, null=True, blank=True)
+    previous_status=models.CharField(max_length=200,default='', null=True, blank=True)
+    current_week=models.IntegerField(default=0, null=True, blank=True)
+    current_status=models.CharField(max_length=200,default='', null=True, blank=True)
+    week_perfomance=models.CharField(max_length=200,default='', null=True, blank=True)
