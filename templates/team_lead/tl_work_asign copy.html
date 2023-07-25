@@ -1,4 +1,4 @@
-{%extends 'head/he_base.html'%}
+{% extends 'team_lead/tl_base.html' %} 
 {%load static%}
 {%block content%}
 
@@ -10,27 +10,27 @@
       <div class="card">
           <div class="card-body">
                   <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row  px-md-3 px-xl-4 rounded mt-3">
-                      <div class="w-50">
+                      <div class="text-md-center text-xl-left">
                           <h6 class="mb-1">BUSINESS NAME</h6>
                         
                       </div>
-                      <div class=" flex-grow text-left  py-md-2 py-xl-0">
+                      <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
                           <h6 class="text-muted mb-0 mx-5">{{client.bs_name}}</h6>
                       </div>
                   </div>
                   <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row  px-md-3 px-xl-4 rounded mt-3">
-                      <div class="w-50">
+                      <div class="text-md-center text-xl-left">
                           <h6 class="mb-1">WEBSITE URL</h6>
                       </div>
-                      <div class=" flex-grow text-left  py-md-2 py-xl-0 mx-5">
+                      <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0 mx-5">
                           <h6 class="text-muted mb-0">{{client.bs_website}}</h6>
                       </div>
                   </div>
                   <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row  px-md-3 px-xl-4 rounded mt-3">
-                    <div class="w-50">
+                    <div class="text-md-center text-xl-left">
                         <h6 class="mb-1">LOCATION</h6> 
                     </div>
-                    <div class=" flex-grow text-left py-md-2 py-xl-0 mx-5">
+                    <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0 mx-5">
                         <h6 class="text-muted mb-0">{{client.bs_location}}</h6>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
               <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_1" id="tsk1">{{client.seo}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT TEAM LEAD" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_tl_1" type="button">
+                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_1" type="button">
               </td>  
               <td><input class="form-control" type="date" name="d1" id="sdate1"></td>
               <td><input class="form-control" type="date" name="d2" id="edate1"></td>
@@ -75,7 +75,7 @@
               <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_2" id="tsk2">{{client.smm}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT TEAM LEAD" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_tl_2" type="button">
+                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_2" type="button">
               </td>  
               <td><input class="form-control" type="date" name="d1" id="sdate2"></td>
               <td><input class="form-control" type="date" name="d2" id="edate2"></td>
@@ -89,7 +89,7 @@
               <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_3" id="tsk3">{{client.sem}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT TEAM LEAD" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_tl_3" type="button">
+                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_3" type="button">
               </td>  
               <td><input class="form-control" type="date" name="d1" id="sdate3"></td>
               <td><input class="form-control" type="date" name="d2" id="edate3"></td>
@@ -103,7 +103,7 @@
               <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_4" id="tsk4">{{client.em}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT TEAM LEAD" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_tl_4" type="button">
+                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_4" type="button">
               </td>  
               <td><input class="form-control" type="date" name="d1" id="sdate4"></td>
               <td><input class="form-control" type="date" name="d2" id="edate4"></td>
@@ -117,7 +117,7 @@
               <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_5" id="tsk5">{{client.cm}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT TEAM LEAD" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_tl_5" type="button">
+                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_5" type="button">
               </td>  
               <td><input class="form-control" type="date" name="d1" id="sdate5"></td>
               <td><input class="form-control" type="date" name="d2" id="edate5"></td>
@@ -131,7 +131,7 @@
               <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_6" id="tsk6">{{client.am}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT TEAM LEAD" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_tl_6" type="button">
+                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_6" type="button">
               </td>  
               <td><input class="form-control" type="date" name="d1" id="sdate6"></td>
               <td><input class="form-control" type="date" name="d2" id="edate6"></td>
@@ -145,7 +145,7 @@
               <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_7" id="tsk7">{{client.mm}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT TEAM LEAD" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_tl_7" type="button">
+                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_7" type="button">
               </td>  
               <td><input class="form-control" type="date" name="d1" id="sdate7"></td>
               <td><input class="form-control" type="date" name="d2" id="edate7"></td>
@@ -159,7 +159,7 @@
               <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_8" id="tsk8">{{client.vm}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT TEAM LEAD" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_tl_8" type="button">
+                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_8" type="button">
               </td>  
               <td><input class="form-control" type="date" name="d1" id="sdate8"></td>
               <td><input class="form-control" type="date" name="d2" id="edate8"></td>
@@ -173,7 +173,7 @@
               <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_9" id="tsk9">{{client.smo}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT TEAM LEAD" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_tl_9" type="button">
+                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_9" type="button">
               </td>  
               <td><input class="form-control" type="date" name="d1" id="sdate9"></td>
               <td><input class="form-control" type="date" name="d2" id="edate9"></td>
@@ -187,7 +187,7 @@
               <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_10" id="tsk10">{{client.lc}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT TEAM LEAD" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_tl_10" type="button">
+                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_10" type="button">
               </td>  
               <td><input class="form-control" type="date" name="d1" id="sdate10"></td>
               <td><input class="form-control" type="date" name="d2" id="edate10"></td>
@@ -798,7 +798,7 @@
     </div>
   </div>
 </div>
-<div class="rowmt-5 hidden modal fade" id="select_tl_1">
+<div class="rowmt-5 hidden modal fade" id="select_exe_1">
   <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel" aria-hidden="true" >
     <div class="modal-content modal-xl" style="background-color: #191c24;">
@@ -808,13 +808,12 @@
             style="background-color: #191c24;border:none;float: right;font-size: 20px;">
             <span aria-hidden="true">&times;</span>
           </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Team Lead</div>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
           <div class="row mt-3">
            
               {% csrf_token %}
             <div class="col-md-4">
-              {% for j in tls %}
-              
+              {% for j in exe %}
           <input type="checkbox" id="myCheckbox" name="check1" value="{{j.fullname}}">
             <label for="myCheckbox">{{j.fullname}}</label><br>
             {% endfor %}
@@ -827,7 +826,7 @@
   </div>
 </div>
 
-<div class="rowmt-5 hidden modal fade" id="select_tl_2">
+<div class="rowmt-5 hidden modal fade" id="select_exe_2">
   <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel" aria-hidden="true" >
     <div class="modal-content modal-xl" style="background-color: #191c24;">
@@ -837,12 +836,12 @@
             style="background-color: #191c24;border:none;float: right;font-size: 20px;">
             <span aria-hidden="true">&times;</span>
           </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Team Lead</div>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
           <div class="row mt-3">
             
               {% csrf_token %}
             <div class="col-md-4">
-              {% for j in tls %}
+              {% for j in exe %}
           <input type="checkbox" id="myCheckbox" name="check2" value="{{j.fullname}}">
             <label for="myCheckbox">{{j.fullname}}</label><br>
             {% endfor %}
@@ -856,7 +855,7 @@
   </div>
 </div>
 
-<div class="rowmt-5 hidden modal fade" id="select_tl_3">
+<div class="rowmt-5 hidden modal fade" id="select_exe_3">
   <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel" aria-hidden="true" >
     <div class="modal-content modal-xl" style="background-color: #191c24;">
@@ -866,12 +865,12 @@
             style="background-color: #191c24;border:none;float: right;font-size: 20px;">
             <span aria-hidden="true">&times;</span>
           </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Team Lead</div>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
           <div class="row mt-3">
            
               {% csrf_token %}
             <div class="col-md-4">
-              {% for j in tls %}
+              {% for j in exe %}
           <input type="checkbox" id="myCheckbox" name="check3" value="{{j.fullname}}">
             <label for="myCheckbox">{{j.fullname}}</label><br>
             {% endfor %}
@@ -883,7 +882,7 @@
     </div>
   </div>
 </div>
-<div class="rowmt-5 hidden modal fade" id="select_tl_4">
+<div class="rowmt-5 hidden modal fade" id="select_exe_4">
   <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel" aria-hidden="true" >
     <div class="modal-content modal-xl" style="background-color: #191c24;">
@@ -893,12 +892,12 @@
             style="background-color: #191c24;border:none;float: right;font-size: 20px;">
             <span aria-hidden="true">&times;</span>
           </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Team Lead</div>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
           <div class="row mt-3">
           
               {% csrf_token %}
             <div class="col-md-4">
-              {% for j in tls %}
+              {% for j in exe %}
           <input type="checkbox" id="myCheckbox" name="check4" value="{{j.fullname}}">
             <label for="myCheckbox">{{j.fullname}}</label><br>
             {% endfor %}
@@ -910,7 +909,7 @@
     </div>
   </div>
 </div>
-<div class="rowmt-5 hidden modal fade" id="select_tl_5">
+<div class="rowmt-5 hidden modal fade" id="select_exe_5">
   <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel" aria-hidden="true" >
     <div class="modal-content modal-xl" style="background-color: #191c24;">
@@ -920,12 +919,12 @@
             style="background-color: #191c24;border:none;float: right;font-size: 20px;">
             <span aria-hidden="true">&times;</span>
           </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Team Lead</div>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
           <div class="row mt-3">
            
               {% csrf_token %}
             <div class="col-md-4">
-              {% for j in tls %}
+              {% for j in exe %}
           <input type="checkbox" id="myCheckbox" name="check5" value="{{j.fullname}}">
             <label for="myCheckbox">{{j.fullname}}</label><br>
             {% endfor %}
@@ -938,7 +937,7 @@
   </div>
 </div>
 
-<div class="rowmt-5 hidden modal fade" id="select_tl_6">
+<div class="rowmt-5 hidden modal fade" id="select_exe_6">
   <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel" aria-hidden="true" >
     <div class="modal-content modal-xl" style="background-color: #191c24;">
@@ -948,12 +947,12 @@
             style="background-color: #191c24;border:none;float: right;font-size: 20px;">
             <span aria-hidden="true">&times;</span>
           </button>
-            <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Team Lead</div>
+            <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
               <div class="row mt-3">
          
               {% csrf_token %}
                 <div class="col-md-4">
-              {% for j in tls %}
+              {% for j in exe %}
               <input type="checkbox" id="myCheckbox" name="check6" value="{{j.fullname}}">
               <label for="myCheckbox">{{j.fullname}}</label><br>
             {% endfor %}
@@ -967,7 +966,7 @@
   </div>
 </div>
 
-<div class="rowmt-5 hidden modal fade" id="select_tl_7">
+<div class="rowmt-5 hidden modal fade" id="select_exe_7">
   <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel" aria-hidden="true" >
     <div class="modal-content modal-xl" style="background-color: #191c24;">
@@ -977,12 +976,12 @@
             style="background-color: #191c24;border:none;float: right;font-size: 20px;">
             <span aria-hidden="true">&times;</span>
           </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Team Lead</div>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
           <div class="row mt-3">
           
               {% csrf_token %}
             <div class="col-md-4">
-              {% for j in tls %}
+              {% for j in exe %}
           <input type="checkbox" id="myCheckbox" name="check7" value="{{j.fullname}}">
             <label for="myCheckbox">{{j.fullname}}</label><br>
             {% endfor %}
@@ -996,7 +995,7 @@
   </div>
 </div>
 
-<div class="rowmt-5 hidden modal fade" id="select_tl_8">
+<div class="rowmt-5 hidden modal fade" id="select_exe_8">
   <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel" aria-hidden="true" >
     <div class="modal-content modal-xl" style="background-color: #191c24;">
@@ -1006,12 +1005,12 @@
             style="background-color: #191c24;border:none;float: right;font-size: 20px;">
             <span aria-hidden="true">&times;</span>
           </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Team Lead</div>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
           <div class="row mt-3">
           
               {% csrf_token %}
             <div class="col-md-4">
-              {% for j in tls %}
+              {% for j in exe %}
           <input type="checkbox" id="myCheckbox" name="check8" value="{{j.fullname}}">
             <label for="myCheckbox">{{j.fullname}}</label><br>
             {% endfor %}
@@ -1023,7 +1022,7 @@
     </div>
   </div>  
 </div>
-<div class="rowmt-5 hidden modal fade" id="select_tl_9">
+<div class="rowmt-5 hidden modal fade" id="select_exe_9">
   <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel" aria-hidden="true" >
     <div class="modal-content modal-xl" style="background-color: #191c24;">
@@ -1033,12 +1032,12 @@
             style="background-color: #191c24;border:none;float: right;font-size: 20px;">
             <span aria-hidden="true">&times;</span>
           </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Team Lead</div>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
           <div class="row mt-3">
            
               {% csrf_token %}
             <div class="col-md-4">
-              {% for j in tls %}
+              {% for j in exe %}
           <input type="checkbox" id="myCheckbox" name="check9" value="{{j.fullname}}">
             <label for="myCheckbox">{{j.fullname}}</label><br>
             {% endfor %}
@@ -1050,7 +1049,7 @@
     </div>
   </div>
 </div>
-<div class="rowmt-5 hidden modal fade" id="select_tl_10">
+<div class="rowmt-5 hidden modal fade" id="select_exe_10">
   <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel" aria-hidden="true" >
     <div class="modal-content modal-xl" style="background-color: #191c24;">
@@ -1060,12 +1059,12 @@
             style="background-color: #191c24;border:none;float: right;font-size: 20px;">
             <span aria-hidden="true">&times;</span>
           </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Team Lead</div>
+          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
           <div class="row mt-3">
           
               {% csrf_token %}
             <div class="col-md-4">
-              {% for j in tls %}
+              {% for j in exe %}
           <input type="checkbox" id="myCheckbox" name="check10" value="{{j.fullname}}">
             <label for="myCheckbox">{{j.fullname}}</label><br>
             {% endfor %}
@@ -1099,7 +1098,7 @@ form_data.append('sub_tsk', sel);
 
 
 $.ajax({
-    url: "{% url 'he_work_add' client.id %}",
+    url: "{% url 'tl_work_add' client.id %}",
     type: 'POST',
     headers: { 'X-CSRFToken': '{{ csrf_token }}' },
     data: form_data,
@@ -1135,7 +1134,7 @@ form_data.append('array', JSON.stringify(array));
 form_data.append('file', $('#fl2')[0].files[0]);
 
 $.ajax({
-    url: "{% url 'he_work_add' client.id %}",
+    url: "{% url 'tl_work_add' client.id %}",
     type: 'POST',
     headers: { 'X-CSRFToken': '{{ csrf_token }}' },
     data: form_data,
@@ -1172,7 +1171,7 @@ form_data.append('array', JSON.stringify(array));
 form_data.append('file', $('#fl3')[0].files[0]);
 
 $.ajax({
-    url: "{% url 'he_work_add' client.id %}",
+    url: "{% url 'tl_work_add' client.id %}",
     type: 'POST',
     headers: { 'X-CSRFToken': '{{ csrf_token }}' },
     data: form_data,
@@ -1209,7 +1208,7 @@ form_data.append('array', JSON.stringify(array));
 form_data.append('file', $('#fl4')[0].files[0]);
 
 $.ajax({
-    url: "{% url 'he_work_add' client.id %}",
+    url: "{% url 'tl_work_add' client.id %}",
     type: 'POST',
     headers: { 'X-CSRFToken': '{{ csrf_token }}' },
     data: form_data,
@@ -1245,7 +1244,7 @@ form_data.append('array', JSON.stringify(array));
 form_data.append('file', $('#fl5')[0].files[0]);
 
 $.ajax({
-    url: "{% url 'he_work_add' client.id %}",
+    url: "{% url 'tl_work_add' client.id %}",
     type: 'POST',
     headers: { 'X-CSRFToken': '{{ csrf_token }}' },
     data: form_data,
@@ -1281,7 +1280,7 @@ form_data.append('array', JSON.stringify(array));
 form_data.append('file', $('#fl6')[0].files[0]);
 
 $.ajax({
-    url: "{% url 'he_work_add' client.id %}",
+    url: "{% url 'tl_work_add' client.id %}",
     type: 'POST',
     headers: { 'X-CSRFToken': '{{ csrf_token }}' },
     data: form_data,
@@ -1317,7 +1316,7 @@ form_data.append('array', JSON.stringify(array));
 form_data.append('file', $('#fl7')[0].files[0]);
 
 $.ajax({
-    url: "{% url 'he_work_add' client.id %}",
+    url: "{% url 'tl_work_add' client.id %}",
     type: 'POST',
     headers: { 'X-CSRFToken': '{{ csrf_token }}' },
     data: form_data,
@@ -1353,7 +1352,7 @@ form_data.append('array', JSON.stringify(array));
 form_data.append('file', $('#fl8')[0].files[0]);
 
 $.ajax({
-    url: "{% url 'he_work_add' client.id %}",
+    url: "{% url 'tl_work_add' client.id %}",
     type: 'POST',
     headers: { 'X-CSRFToken': '{{ csrf_token }}' },
     data: form_data,
@@ -1389,7 +1388,7 @@ form_data.append('array', JSON.stringify(array));
 form_data.append('file', $('#fl9')[0].files[0]);
 
 $.ajax({
-    url: "{% url 'he_work_add' client.id %}",
+    url: "{% url 'tl_work_add' client.id %}",
     type: 'POST',
     headers: { 'X-CSRFToken': '{{ csrf_token }}' },
     data: form_data,
@@ -1425,7 +1424,7 @@ form_data.append('array', JSON.stringify(array));
 form_data.append('file', $('#fl10')[0].files[0]);
 
 $.ajax({
-    url: "{% url 'he_work_add' client.id %}",
+    url: "{% url 'tl_work_add' client.id %}",
     type: 'POST',
     headers: { 'X-CSRFToken': '{{ csrf_token }}' },
     data: form_data,

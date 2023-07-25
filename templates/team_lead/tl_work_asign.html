@@ -54,147 +54,193 @@
               <th scope="col" style="color:#6C7293;">Submit</th>
             </tr>
           </thead>
-          <tbody id="myTable">     
-           {% if client.seo %}
+          <tbody id="myTable"> 
+          {% for w in works %}    
+           {% if w.task == client.seo %}
               <tr>
-                <form action="" method="post">{% csrf_token %}
-              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_1" id="tsk1">{{client.seo}}</td>
+                <form action="{% url 'tl_work_add' w.id %}" method="post">{% csrf_token %}
+              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_1" id="tsk1">{{w.task}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_1" type="button">
-              </td>  
-              <td><input class="form-control" type="date" name="d1" id="sdate1"></td>
-              <td><input class="form-control" type="date" name="d2" id="edate1"></td>
+                <select class="form-control" name="ex_name" id="ex_name">
+                  <option class="text-white" value="">Select Executive</option>
+                  {% for e in exe %}
+                  <option class="text-white" value="{{ e.id }}">{{e.fullname}}</option>
+                  {% endfor %}
+                </select>             
+               </td>  
+              <td><input class="form-control" type="date" name="d1" id="sdate1" value="{{w.start_date|date:'Y-m-d'}}"></td>
+              <td><input class="form-control" type="date" name="d2" id="edate1" value="{{w.end_date|date:'Y-m-d'}}"></td>
               <td><button class="btn btn-outline-success" id="btn1">SUBMIT</button></td>
               </form>
               </tr>
           {% endif %}  
-          {% if client.smm %}
+          {% if w.task == client.smm %}
               <tr>
-                <form action="" method="post">{% csrf_token %}
-              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_2" id="tsk2">{{client.smm}}</td>
+                <form action="{% url 'tl_work_add' w.id %}" method="post">{% csrf_token %}
+              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_2" id="tsk2">{{w.task}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_2" type="button">
-              </td>  
-              <td><input class="form-control" type="date" name="d1" id="sdate2"></td>
-              <td><input class="form-control" type="date" name="d2" id="edate2"></td>
+                <select class="form-control" name="ex_name" id="ex_name">
+                  <option class="text-white" value="">Select Executive</option>
+                  {% for e in exe %}
+                  <option class="text-white" value="{{ e.id }}">{{e.fullname}}</option>
+                  {% endfor %}
+                </select>              </td>  
+              <td><input class="form-control" type="date" name="d1" id="sdate2" value="{{w.start_date|date:'Y-m-d'}}"></td>
+              <td><input class="form-control" type="date" name="d2" id="edate2" value="{{w.end_date|date:'Y-m-d'}}"></td>
               <td><button class="btn btn-outline-success" id="btn2">SUBMIT</button></td>
               </form>
               </tr>
           {% endif %}  
-          {% if client.sem %}
+          {% if w.task == client.sem %}
               <tr>
-                <form action="" method="post">{% csrf_token %}
-              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_3" id="tsk3">{{client.sem}}</td>
+                <form action="{% url 'tl_work_add' w.id %}" method="post">{% csrf_token %}
+              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_3" id="tsk3">{{w.task}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_3" type="button">
-              </td>  
-              <td><input class="form-control" type="date" name="d1" id="sdate3"></td>
-              <td><input class="form-control" type="date" name="d2" id="edate3"></td>
+                <select class="form-control" name="ex_name" id="ex_name">
+                  <option class="text-white" value="">Select Executive</option>
+                  {% for e in exe %}
+                  <option class="text-white" value="{{ e.id }}">{{e.fullname}}</option>
+                  {% endfor %}
+                </select>              </td>  
+              <td><input class="form-control" type="date" name="d1" id="sdate3" value="{{w.start_date|date:'Y-m-d'}}"></td>
+              <td><input class="form-control" type="date" name="d2" id="edate3" value="{{w.end_date|date:'Y-m-d'}}"></td>
               <td><button class="btn btn-outline-success" id="btn3">SUBMIT</button></td>
               </form>
               </tr>
           {% endif %}  
-          {% if client.em %}
+          {% if w.task == client.em %}
               <tr>
-                <form action="" method="post">{% csrf_token %}
-              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_4" id="tsk4">{{client.em}}</td>
+                <form action="{% url 'tl_work_add' w.id %}" method="post">{% csrf_token %}
+              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_4" id="tsk4">{{w.task}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_4" type="button">
+                <select class="form-control" name="ex_name" id="ex_name">
+                  <option class="text-white" value="">Select Executive</option>
+                  {% for e in exe %}
+                  <option class="text-white" value="{{ e.id }}">{{e.fullname}}</option>
+                  {% endfor %}
+                </select>
+                  <!-- <inp class="text-white"ut value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_4" type="button"> -->
               </td>  
-              <td><input class="form-control" type="date" name="d1" id="sdate4"></td>
-              <td><input class="form-control" type="date" name="d2" id="edate4"></td>
-              <td><button class="btn btn-outline-success" id="btn4">SUBMIT</button></td>
+              <td><input class="form-control" type="date" name="d1" id="sdate4" value="{{w.start_date|date:'Y-m-d'}}"></td>
+              <td><input class="form-control" type="date" name="d2" id="edate4" value="{{w.end_date|date:'Y-m-d'}}"></td>
+              <td><button class="btn btn-outline-success btn4" id="btn4" >SUBMIT</button></td>
               </form>
               </tr>
           {% endif %}  
-          {% if client.cm %}
+          {% if w.task == client.cm %}
               <tr>
-                <form action="" method="post">{% csrf_token %}
-              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_5" id="tsk5">{{client.cm}}</td>
+                <form action="{% url 'tl_work_add' w.id %}" method="post">{% csrf_token %}
+              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_5" id="tsk5">{{w.task}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_5" type="button">
-              </td>  
-              <td><input class="form-control" type="date" name="d1" id="sdate5"></td>
-              <td><input class="form-control" type="date" name="d2" id="edate5"></td>
+                <select class="form-control" name="ex_name" id="ex_name">
+                  <option class="text-white" class="text-white" value="">Select Executive</option>
+                  {% for e in exe %}
+                  <option class="text-white" value="{{ e.id }}">{{e.fullname}}</option>
+                  {% endfor %}
+                </select>              </td>  
+              <td><input class="form-control" type="date" name="d1" id="sdate5" value="{{w.start_date|date:'Y-m-d'}}"></td>
+              <td><input class="form-control" type="date" name="d2" id="edate5" value="{{w.end_date|date:'Y-m-d'}}"></td>
               <td><button class="btn btn-outline-success" id="btn5">SUBMIT</button></td>
               </form>
               </tr>
           {% endif %}  
-          {% if client.am %}
+          {% if w.task == client.am %}
               <tr>
-                <form action="" method="post">{% csrf_token %}
-              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_6" id="tsk6">{{client.am}}</td>
+                <form action="{% url 'tl_work_add' w.id %}" method="post">{% csrf_token %}
+              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_6" id="tsk6">{{w.task}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_6" type="button">
-              </td>  
-              <td><input class="form-control" type="date" name="d1" id="sdate6"></td>
-              <td><input class="form-control" type="date" name="d2" id="edate6"></td>
+                <select class="form-control" name="ex_name" id="ex_name">
+                  <option class="text-white" value="">Select Executive</option>
+                  {% for e in exe %}
+                  <option class="text-white" value="{{ e.id }}">{{e.fullname}}</option>
+                  {% endfor %}
+                </select>              </td>  
+              <td><input class="form-control" type="date" name="d1" id="sdate6" value="{{w.start_date|date:'Y-m-d'}}"></td>
+              <td><input class="form-control" type="date" name="d2" id="edate6" value="{{w.end_date|date:'Y-m-d'}}"></td>
               <td><button class="btn btn-outline-success" id="btn6">SUBMIT</button></td>
               </form>
               </tr>
           {% endif %}  
-          {% if client.mm %}
+          {% if w.task == client.mm %}
               <tr>
-                <form action="" method="post">{% csrf_token %}
-              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_7" id="tsk7">{{client.mm}}</td>
+                <form action="{% url 'tl_work_add' w.id %}" method="post">{% csrf_token %}
+              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_7" id="tsk7">{{w.task}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_7" type="button">
-              </td>  
-              <td><input class="form-control" type="date" name="d1" id="sdate7"></td>
-              <td><input class="form-control" type="date" name="d2" id="edate7"></td>
+                <select class="form-control" name="ex_name" id="ex_name">
+                  <option class="text-white" value="">Select Executive</option>
+                  {% for e in exe %}
+                  <option class="text-white" value="{{ e.id }}">{{e.fullname}}</option>
+                  {% endfor %}
+                </select>              </td>  
+              <td><input class="form-control" type="date" name="d1" id="sdate7" value="{{w.start_date|date:'Y-m-d'}}"></td>
+              <td><input class="form-control" type="date" name="d2" id="edate7" value="{{w.end_date|date:'Y-m-d'}}"></td>
               <td><button class="btn btn-outline-success" id="btn7">SUBMIT</button></td>
               </form>
               </tr>
           {% endif %}  
-          {% if client.vm %}
+          {% if w.task == client.vm %}
               <tr>
-                <form action="" method="post">{% csrf_token %}
-              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_8" id="tsk8">{{client.vm}}</td>
+                <form action="{% url 'tl_work_add' w.id %}" method="post">{% csrf_token %}
+              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_8" id="tsk8">{{w.task}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_8" type="button">
-              </td>  
-              <td><input class="form-control" type="date" name="d1" id="sdate8"></td>
-              <td><input class="form-control" type="date" name="d2" id="edate8"></td>
+                <select class="form-control" name="ex_name" id="ex_name">
+                  <option class="text-white" value="">Select Executive</option>
+                  {% for e in exe %}
+                  <option class="text-white" value="{{ e.id }}">{{e.fullname}}</option>
+                  {% endfor %}
+                </select>              </td>  
+              <td><input class="form-control" type="date" name="d1" id="sdate8" value="{{w.start_date|date:'Y-m-d'}}"></td>
+              <td><input class="form-control" type="date" name="d2" id="edate8" value="{{w.end_date|date:'Y-m-d'}}"></td>
               <td><button class="btn btn-outline-success" id="btn8">SUBMIT</button></td>
               </form>
               </tr>
           {% endif %}  
-          {% if client.smo %}
+          
+          {% if w.task == client.smo %}
               <tr>
-                <form action="" method="post">{% csrf_token %}
-              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_9" id="tsk9">{{client.smo}}</td>
+                <form action="{% url 'tl_work_add' w.id %}" method="post">{% csrf_token %}
+              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_9" id="tsk9">{{w.task}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_9" type="button">
-              </td>  
-              <td><input class="form-control" type="date" name="d1" id="sdate9"></td>
-              <td><input class="form-control" type="date" name="d2" id="edate9"></td>
+                <select class="form-control" name="ex_name" id="ex_name">
+                  <option class="text-white" value="">Select Executive</option>
+                  {% for e in exe %}
+                  <option class="text-white" value="{{ e.id }}">{{e.fullname}}</option>
+                  {% endfor %}
+                </select>              </td>  
+              <td><input class="form-control" type="date" name="d1" id="sdate9" value="{{w.start_date|date:'Y-m-d'}}"></td>
+              <td><input class="form-control" type="date" name="d2" id="edate9" value="{{w.end_date|date:'Y-m-d'}}"></td>
               <td><button class="btn btn-outline-success" id="btn9">SUBMIT</button></td>
               </form>
               </tr>
           {% endif %}  
-          {% if client.lc %}
+          {% if w.task == client.lc %}
               <tr>
-                <form action="" method="post">{% csrf_token %}
-              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_10" id="tsk10">{{client.lc}}</td>
+                <form action="{% url 'tl_work_add' w.id %}" method="post">{% csrf_token %}
+              <td style="color:white;" data-bs-toggle="modal" data-bs-target="#wrk_10" id="tsk10">{{w.task}}</td>
              
               <td style="color:white;">
-                  <input value="SELECT EXECUTIVE" class="form-control"  data-bs-toggle="modal" data-bs-target="#select_exe_10" type="button">
-              </td>  
-              <td><input class="form-control" type="date" name="d1" id="sdate10"></td>
-              <td><input class="form-control" type="date" name="d2" id="edate10"></td>
+                <select class="form-control" name="ex_name" id="ex_name">
+                  <option class="text-white" value="">Select Executive</option>
+                  {% for e in exe %}
+                  <option class="text-white" value="{{ e.id }}">{{e.fullname}}</option>
+                  {% endfor %}
+                </select>              </td>  
+              <td><input class="form-control" type="date" name="d1" id="sdate10" value="{{w.start_date|date:'Y-m-d'}}"></td>
+              <td><input class="form-control" type="date" name="d2" id="edate10" value="{{w.end_date|date:'Y-m-d'}}"></td>
               <td><button class="btn btn-outline-success" id="btn10">SUBMIT</button></td>
               </form>
               </tr>
-          {% endif %}  
+          {% endif %} 
+          {% endfor %} 
           </tbody>
         </table>
       </div>
@@ -798,653 +844,6 @@
     </div>
   </div>
 </div>
-<div class="rowmt-5 hidden modal fade" id="select_exe_1">
-  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
-    aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-    <div class="modal-content modal-xl" style="background-color: #191c24;">
-      <div class="card ">
-        <div class="card-body">
-          <button type="button" class="close text-light" data-bs-dismiss="modal" aria-label=""
-            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
-          <div class="row mt-3">
-           
-              {% csrf_token %}
-            <div class="col-md-4">
-              {% for j in exe %}
-          <input type="checkbox" id="myCheckbox" name="check1" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
-           </div> 
-          
-      </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="rowmt-5 hidden modal fade" id="select_exe_2">
-  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
-    aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-    <div class="modal-content modal-xl" style="background-color: #191c24;">
-      <div class="card ">
-        <div class="card-body">
-          <button type="button" class="close text-light" data-bs-dismiss="modal" aria-label=""
-            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
-          <div class="row mt-3">
-            
-              {% csrf_token %}
-            <div class="col-md-4">
-              {% for j in exe %}
-          <input type="checkbox" id="myCheckbox" name="check2" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
-           </div> 
-           
-          
-      </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="rowmt-5 hidden modal fade" id="select_exe_3">
-  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
-    aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-    <div class="modal-content modal-xl" style="background-color: #191c24;">
-      <div class="card ">
-        <div class="card-body">
-          <button type="button" class="close text-light" data-bs-dismiss="modal" aria-label=""
-            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
-          <div class="row mt-3">
-           
-              {% csrf_token %}
-            <div class="col-md-4">
-              {% for j in exe %}
-          <input type="checkbox" id="myCheckbox" name="check3" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
-           </div> 
-          
-      </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="rowmt-5 hidden modal fade" id="select_exe_4">
-  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
-    aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-    <div class="modal-content modal-xl" style="background-color: #191c24;">
-      <div class="card ">
-        <div class="card-body">
-          <button type="button" class="close text-light" data-bs-dismiss="modal" aria-label=""
-            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
-          <div class="row mt-3">
-          
-              {% csrf_token %}
-            <div class="col-md-4">
-              {% for j in exe %}
-          <input type="checkbox" id="myCheckbox" name="check4" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
-           </div> 
-          
-      </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="rowmt-5 hidden modal fade" id="select_exe_5">
-  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
-    aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-    <div class="modal-content modal-xl" style="background-color: #191c24;">
-      <div class="card ">
-        <div class="card-body">
-          <button type="button" class="close text-light" data-bs-dismiss="modal" aria-label=""
-            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
-          <div class="row mt-3">
-           
-              {% csrf_token %}
-            <div class="col-md-4">
-              {% for j in exe %}
-          <input type="checkbox" id="myCheckbox" name="check5" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
-           </div> 
-          
-      </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="rowmt-5 hidden modal fade" id="select_exe_6">
-  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
-    aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-    <div class="modal-content modal-xl" style="background-color: #191c24;">
-      <div class="card ">
-        <div class="card-body">
-          <button type="button" class="close text-light" data-bs-dismiss="modal" aria-label=""
-            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
-            <span aria-hidden="true">&times;</span>
-          </button>
-            <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
-              <div class="row mt-3">
-         
-              {% csrf_token %}
-                <div class="col-md-4">
-              {% for j in exe %}
-              <input type="checkbox" id="myCheckbox" name="check6" value="{{j.fullname}}">
-              <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
-           </div> 
-           
-          
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="rowmt-5 hidden modal fade" id="select_exe_7">
-  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
-    aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-    <div class="modal-content modal-xl" style="background-color: #191c24;">
-      <div class="card ">
-        <div class="card-body">
-          <button type="button" class="close text-light" data-bs-dismiss="modal" aria-label=""
-            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
-          <div class="row mt-3">
-          
-              {% csrf_token %}
-            <div class="col-md-4">
-              {% for j in exe %}
-          <input type="checkbox" id="myCheckbox" name="check7" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
-           </div> 
-           
-           
-      </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="rowmt-5 hidden modal fade" id="select_exe_8">
-  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
-    aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-    <div class="modal-content modal-xl" style="background-color: #191c24;">
-      <div class="card ">
-        <div class="card-body">
-          <button type="button" class="close text-light" data-bs-dismiss="modal" aria-label=""
-            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
-          <div class="row mt-3">
-          
-              {% csrf_token %}
-            <div class="col-md-4">
-              {% for j in exe %}
-          <input type="checkbox" id="myCheckbox" name="check8" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
-           </div> 
-           
-      </div>
-        </div>
-      </div>
-    </div>
-  </div>  
-</div>
-<div class="rowmt-5 hidden modal fade" id="select_exe_9">
-  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
-    aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-    <div class="modal-content modal-xl" style="background-color: #191c24;">
-      <div class="card ">
-        <div class="card-body">
-          <button type="button" class="close text-light" data-bs-dismiss="modal" aria-label=""
-            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
-          <div class="row mt-3">
-           
-              {% csrf_token %}
-            <div class="col-md-4">
-              {% for j in exe %}
-          <input type="checkbox" id="myCheckbox" name="check9" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
-           </div> 
-          
-      </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="rowmt-5 hidden modal fade" id="select_exe_10">
-  <div class="modal-dialog bd-example-modal-xl modal-dialog-centered" role="document" tabindex="-1" role="dialog"
-    aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-    <div class="modal-content modal-xl" style="background-color: #191c24;">
-      <div class="card ">
-        <div class="card-body">
-          <button type="button" class="close text-light" data-bs-dismiss="modal" aria-label=""
-            style="background-color: #191c24;border:none;float: right;font-size: 20px;">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div class="text-info" style="font-size: 20px;font-weight: 600;">Choose Executive</div>
-          <div class="row mt-3">
-          
-              {% csrf_token %}
-            <div class="col-md-4">
-              {% for j in exe %}
-          <input type="checkbox" id="myCheckbox" name="check10" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
-           </div> 
-           
-      </div>
-        </div>
-      </div>
-    </div>
-  </div>  
-</div>
-<script>
-$(document).on("click","#btn1",function(){
-            var array = [];
-            $("input:checkbox[name=check1]:checked").each(function() {
-                array.push($(this).val());
-            });
-    
-      var form_data = new FormData();
-      var sel = $("input:radio[name='sub_tsk']:checked").val()
-form_data.append('task', $("#tsk1").text());
-form_data.append('des', $("#des1").val());
-form_data.append('sdate', $("#sdate1").val());
-form_data.append('edate', $("#edate1").val());
-form_data.append('ontrgt', $("#on_trgt").val());
-form_data.append('offtrgt', $("#off_trgt").val());
-form_data.append('array', JSON.stringify(array));
-form_data.append('file', $('#fl1')[0].files[0]);
-form_data.append('sub_tsk', sel);
-
-
-
-$.ajax({
-    url: "{% url 'tl_work_add' client.id %}",
-    type: 'POST',
-    headers: { 'X-CSRFToken': '{{ csrf_token }}' },
-    data: form_data,
-    processData: false,
-    contentType: false,
-    success: function(response) {
-        if (response.message === 'success') {
-            
-        }
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.log(textStatus, errorThrown);
-    }
-});
-  }
-  
-  
-              
-);
-$(document).on("click","#btn2",function(){
-            var array = [];
-            $("input:checkbox[name=check2]:checked").each(function() {
-                array.push($(this).val());
-            });
-    
-      var form_data = new FormData();
-form_data.append('task', $("#tsk2").text());
-form_data.append('des', $("#des2").val());
-form_data.append('sdate', $("#sdate2").val());
-form_data.append('edate', $("#edate2").val());
-form_data.append('trgt', $("#trgt2").val());
-form_data.append('array', JSON.stringify(array));
-form_data.append('file', $('#fl2')[0].files[0]);
-
-$.ajax({
-    url: "{% url 'tl_work_add' client.id %}",
-    type: 'POST',
-    headers: { 'X-CSRFToken': '{{ csrf_token }}' },
-    data: form_data,
-    processData: false,
-    contentType: false,
-    success: function(response) {
-        if (response.message === 'success') {
-            $('#modalForm')[0].reset();
-        }
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.log(textStatus, errorThrown);
-    }
-});
-  }
-  
-  
-              
-);
-
-$(document).on("click","#btn3",function(){
-            var array = [];
-            $("input:checkbox[name=check3]:checked").each(function() {
-                array.push($(this).val());
-            });
-    
-      var form_data = new FormData();
-form_data.append('task', $("#tsk3").text());
-form_data.append('des', $("#des3").val());
-form_data.append('sdate', $("#sdate3").val());
-form_data.append('edate', $("#edate3").val());
-form_data.append('trgt', $("#trgt3").val());
-form_data.append('array', JSON.stringify(array));
-form_data.append('file', $('#fl3')[0].files[0]);
-
-$.ajax({
-    url: "{% url 'tl_work_add' client.id %}",
-    type: 'POST',
-    headers: { 'X-CSRFToken': '{{ csrf_token }}' },
-    data: form_data,
-    processData: false,
-    contentType: false,
-    success: function(response) {
-        if (response.message === 'success') {
-            $('#modalForm')[0].reset();
-        }
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.log(textStatus, errorThrown);
-    }
-});
-  }
-  
-  
-              
-);
-
-$(document).on("click","#btn4",function(){
-            var array = [];
-            $("input:checkbox[name=check4]:checked").each(function() {
-                array.push($(this).val());
-            });
-    
-      var form_data = new FormData();
-form_data.append('task', $("#tsk4").text());
-form_data.append('des', $("#des4").val());
-form_data.append('sdate', $("#sdate4").val());
-form_data.append('edate', $("#edate4").val());
-form_data.append('trgt', $("#trgt4").val());
-form_data.append('array', JSON.stringify(array));
-form_data.append('file', $('#fl4')[0].files[0]);
-
-$.ajax({
-    url: "{% url 'tl_work_add' client.id %}",
-    type: 'POST',
-    headers: { 'X-CSRFToken': '{{ csrf_token }}' },
-    data: form_data,
-    processData: false,
-    contentType: false,
-    success: function(response) {
-        if (response.message === 'success') {
-            $('#modalForm')[0].reset();
-        }
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.log(textStatus, errorThrown);
-    }
-});
-  }
-  
-  
-              
-);
-$(document).on("click","#btn5",function(){
-            var array = [];
-            $("input:checkbox[name=check5]:checked").each(function() {
-                array.push($(this).val());
-            });
-    
-      var form_data = new FormData();
-form_data.append('task', $("#tsk5").text());
-form_data.append('des', $("#des5").val());
-form_data.append('sdate', $("#sdate5").val());
-form_data.append('edate', $("#edate5").val());
-form_data.append('trgt', $("#trgt5").val());
-form_data.append('array', JSON.stringify(array));
-form_data.append('file', $('#fl5')[0].files[0]);
-
-$.ajax({
-    url: "{% url 'tl_work_add' client.id %}",
-    type: 'POST',
-    headers: { 'X-CSRFToken': '{{ csrf_token }}' },
-    data: form_data,
-    processData: false,
-    contentType: false,
-    success: function(response) {
-        if (response.message === 'success') {
-            $('#modalForm')[0].reset();
-        }
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.log(textStatus, errorThrown);
-    }
-});
-  }
-  
-  
-              
-);
-$(document).on("click","#btn6",function(){
-            var array = [];
-            $("input:checkbox[name=check6]:checked").each(function() {
-                array.push($(this).val());
-            });
-    
-      var form_data = new FormData();
-form_data.append('task', $("#tsk6").text());
-form_data.append('des', $("#des6").val());
-form_data.append('sdate', $("#sdate6").val());
-form_data.append('edate', $("#edate6").val());
-form_data.append('trgt', $("#trgt6").val());
-form_data.append('array', JSON.stringify(array));
-form_data.append('file', $('#fl6')[0].files[0]);
-
-$.ajax({
-    url: "{% url 'tl_work_add' client.id %}",
-    type: 'POST',
-    headers: { 'X-CSRFToken': '{{ csrf_token }}' },
-    data: form_data,
-    processData: false,
-    contentType: false,
-    success: function(response) {
-        if (response.message === 'success') {
-            $('#modalForm')[0].reset();
-        }
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.log(textStatus, errorThrown);
-    }
-});
-  }
-  
-  
-              
-);
-$(document).on("click","#btn7",function(){
-            var array = [];
-            $("input:checkbox[name=check7]:checked").each(function() {
-                array.push($(this).val());
-            });
-    
-      var form_data = new FormData();
-form_data.append('task', $("#tsk7").text());
-form_data.append('des', $("#des7").val());
-form_data.append('sdate', $("#sdate7").val());
-form_data.append('edate', $("#edate7").val());
-form_data.append('trgt', $("#trgt7").val());
-form_data.append('array', JSON.stringify(array));
-form_data.append('file', $('#fl7')[0].files[0]);
-
-$.ajax({
-    url: "{% url 'tl_work_add' client.id %}",
-    type: 'POST',
-    headers: { 'X-CSRFToken': '{{ csrf_token }}' },
-    data: form_data,
-    processData: false,
-    contentType: false,
-    success: function(response) {
-        if (response.message === 'success') {
-            $('#modalForm')[0].reset();
-        }
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.log(textStatus, errorThrown);
-    }
-});
-  }
-  
-  
-              
-);
-$(document).on("click","#btn8",function(){
-            var array = [];
-            $("input:checkbox[name=check8]:checked").each(function() {
-                array.push($(this).val());
-            });
-    
-      var form_data = new FormData();
-form_data.append('task', $("#tsk8").text());
-form_data.append('des', $("#des8").val());
-form_data.append('sdate', $("#sdate8").val());
-form_data.append('edate', $("#edate8").val());
-form_data.append('trgt', $("#trgt8").val());
-form_data.append('array', JSON.stringify(array));
-form_data.append('file', $('#fl8')[0].files[0]);
-
-$.ajax({
-    url: "{% url 'tl_work_add' client.id %}",
-    type: 'POST',
-    headers: { 'X-CSRFToken': '{{ csrf_token }}' },
-    data: form_data,
-    processData: false,
-    contentType: false,
-    success: function(response) {
-        if (response.message === 'success') {
-            $('#modalForm')[0].reset();
-        }
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.log(textStatus, errorThrown);
-    }
-});
-  }
-  
-  
-              
-);
-$(document).on("click","#btn9",function(){
-            var array = [];
-            $("input:checkbox[name=check9]:checked").each(function() {
-                array.push($(this).val());
-            });
-    
-      var form_data = new FormData();
-form_data.append('task', $("#tsk9").text());
-form_data.append('des', $("#des9").val());
-form_data.append('sdate', $("#sdate9").val());
-form_data.append('edate', $("#edate9").val());
-form_data.append('trgt', $("#trgt9").val());
-form_data.append('array', JSON.stringify(array));
-form_data.append('file', $('#fl9')[0].files[0]);
-
-$.ajax({
-    url: "{% url 'tl_work_add' client.id %}",
-    type: 'POST',
-    headers: { 'X-CSRFToken': '{{ csrf_token }}' },
-    data: form_data,
-    processData: false,
-    contentType: false,
-    success: function(response) {
-        if (response.message === 'success') {
-            $('#modalForm')[0].reset();
-        }
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.log(textStatus, errorThrown);
-    }
-});
-  }
-  
-  
-              
-);
-$(document).on("click","#btn10",function(){
-            var array = [];
-            $("input:checkbox[name=check10]:checked").each(function() {
-                array.push($(this).val());
-            });
-    
-      var form_data = new FormData();
-form_data.append('task', $("#tsk10").text());
-form_data.append('des', $("#des10").val());
-form_data.append('sdate', $("#sdate10").val());
-form_data.append('edate', $("#edate10").val());
-form_data.append('trgt', $("#trgt10").val());
-form_data.append('array', JSON.stringify(array));
-form_data.append('file', $('#fl10')[0].files[0]);
-
-$.ajax({
-    url: "{% url 'tl_work_add' client.id %}",
-    type: 'POST',
-    headers: { 'X-CSRFToken': '{{ csrf_token }}' },
-    data: form_data,
-    processData: false,
-    contentType: false,
-    success: function(response) {
-        if (response.message === 'success') {
-            $('#modalForm')[0].reset();
-        }
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.log(textStatus, errorThrown);
-    }
-});
-  }
-  
-  
-              
-);
-</script>
 <script>
   $(document).ready(function () {
     $("#search").on("keyup", function () {

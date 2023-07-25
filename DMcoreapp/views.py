@@ -3603,7 +3603,8 @@ def he_view_work_asign_exe(request,cid,tlid):
     usr = user_registration.objects.get(id=ids)
     client=client_information.objects.get(id=cid)
     work=work_asign.objects.filter(client_name=client.id,tl_id=tlid)
-    return render(request,'head/he_view_work_asign_exe.html',{"usr":usr,"w":work})
+    all_users = user_registration.objects.all()
+    return render(request,'head/he_view_work_asign_exe.html',{"usr":usr,"w":work,"all_users":all_users})
 
 
 def he_daily_task(request):
@@ -6715,94 +6716,118 @@ def tl_project(request):
     usr = user_registration.objects.get(id=ids)
     return render(request,'team_lead/tl_project.html',{"usr":usr})
 
+from django.db.models import Max
 def tl_view_works(request):
     ids=request.session['userid']
     usr = user_registration.objects.get(id=ids)
-    client=client_information.objects.all()
-    return render(request,'team_lead/tl_view_works.html',{'client':client,"usr":usr,})
+    # client=client_information.objects.all()
+    distinct_clients = client_information.objects.filter(client_works__tl_id=ids).distinct()
+    return render(request,'team_lead/tl_view_works.html',{'distinct_clients':distinct_clients,"usr":usr,})
 
 def tl_work_asign(request,pk):
     ids=request.session['userid']
     usr = user_registration.objects.get(id=ids)
     client=client_information.objects.get(id=pk)
+    works = Work.objects.filter(client_name=client,tl_id=ids)
     exe=user_registration.objects.filter(department='Digital Marketing Executive',tl_id=ids)
-    return render(request,'team_lead/tl_work_asign.html',{'client':client,'exe':exe,"usr":usr,})
+    return render(request,'team_lead/tl_work_asign.html',{'client':client,'exe':exe,"usr":usr,"works":works})
 
 def tl_work_add(request,id):
     ids=request.session['userid']
     usr = user_registration.objects.get(id=ids)
-    if request.method == 'POST':
-        task = request.POST.get('task')
-        des = request.POST.get('des')
-        sdate=request.POST.get('sdate')
-        edate=request.POST.get('edate')
-        file=request.FILES.get('file')
-        sub_tsk = request.POST.get('sub_tsk')
-        target=request.POST.get('trgt')
-        client=client_information.objects.get(id=id)
-        json_data = request.POST.get('array', '')
-        array = json.loads(json_data)
-        w=Work(task=task,description=des,start_date=sdate,end_date=edate,file_attached=file,cl_name=client.bs_name,client_name=client)
-        w.save()
+    if request.method == "POST":
+        ex_name_id = request.POST.get("ex_name")
+        s_date = request.POST.get("d1")
+        e_date = request.POST.get("d2")
+        print(s_date)
+        print(e_date)
+        wa = work_asign.objects.get(work_id=id)
+        wa.exe_name_id = ex_name_id
+        clid = wa.client_name_id
+        print(clid)
+        wa.save()
+        work = Work.objects.get(id=id)
+        work.start_date = s_date
+        work.end_date = e_date
+        work.save()
 
-        if w.task=="SEO":
-            w.file_2=client.seo_file
-            w.save()
-            if sub_tsk=="On page":
-                w.sub_task="On page"
-                w.sub_des=client.on_pg_txt
-                w.sub_file=client.on_pg_file
-                w.target=request.POST.get('ontrgt')
-                w.save()
-            if sub_tsk=="Off page":
-                w.sub_task="Off page"
-                w.sub_des=client.off_pg_txt
-                w.sub_file=client.off_pg_file
-                w.target=request.POST.get('offtrgt')
-                w.save()
+        return redirect(tl_work_asign,pk=clid)
 
-        if w.task=="SMM":
-            w.file_2=client.smm_file
-            w.target=target
-            w.save()
-        if w.task=="SEM/PPC":
-            w.file_2=client.sem_file
-            w.target=target
-            w.save()
-        if w.task=="Email Marketing":
-            w.file_2=client.em_file
-            w.target=target
-            w.save()   
-        if w.task=="Content Marketing":
-            w.file_2=client.cm_file
-            w.target=target
-            w.save() 
-        if w.task=="Affiliate Marketing":
-            w.file_2=client.am_file
-            w.target=target
-            w.save()   
-        if w.task=="Mobile marketing":
-            w.file_2=client.mm_file
-            w.target=target
-            w.save()  
-        if w.task=="Video Marketing":
-            w.file_2=client.vm_file
-            w.target=target
-            w.save() 
-        if w.task=="SMO":
-            w.file_2=client.smo_file
-            w.target=target
-            w.save() 
-        if w.task=="Leads Collection":
-            w.file_2=client.lc_file
-            w.target=target
-            w.save()            
-        w=Work.objects.latest('id')
-        for i in array:
-            b=user_registration.objects.get(department="Digital Marketing Executive",fullname=i)
-            c=work_asign(work_id=w.id,exe_name_id=b.id,client_name_id=client.id)
-            c.save()
-        return HttpResponse({"message": "success"})
+# def tl_work_add(request,id):
+#     ids=request.session['userid']
+#     usr = user_registration.objects.get(id=ids)
+#     if request.method == 'POST':
+#         task = request.POST.get('task')
+#         des = request.POST.get('des')
+#         sdate=request.POST.get('sdate')
+#         edate=request.POST.get('edate')
+#         file=request.FILES.get('file')
+#         sub_tsk = request.POST.get('sub_tsk')
+#         target=request.POST.get('trgt')
+#         client=client_information.objects.get(id=id)
+#         json_data = request.POST.get('array', '')
+#         array = json.loads(json_data)
+#         w=Work(task=task,description=des,start_date=sdate,end_date=edate,file_attached=file,cl_name=client.bs_name,client_name=client)
+#         w.save()
+
+#         if w.task=="SEO":
+#             w.file_2=client.seo_file
+#             w.save()
+#             if sub_tsk=="On page":
+#                 w.sub_task="On page"
+#                 w.sub_des=client.on_pg_txt
+#                 w.sub_file=client.on_pg_file
+#                 w.target=request.POST.get('ontrgt')
+#                 w.save()
+#             if sub_tsk=="Off page":
+#                 w.sub_task="Off page"
+#                 w.sub_des=client.off_pg_txt
+#                 w.sub_file=client.off_pg_file
+#                 w.target=request.POST.get('offtrgt')
+#                 w.save()
+
+#         if w.task=="SMM":
+#             w.file_2=client.smm_file
+#             w.target=target
+#             w.save()
+#         if w.task=="SEM/PPC":
+#             w.file_2=client.sem_file
+#             w.target=target
+#             w.save()
+#         if w.task=="Email Marketing":
+#             w.file_2=client.em_file
+#             w.target=target
+#             w.save()   
+#         if w.task=="Content Marketing":
+#             w.file_2=client.cm_file
+#             w.target=target
+#             w.save() 
+#         if w.task=="Affiliate Marketing":
+#             w.file_2=client.am_file
+#             w.target=target
+#             w.save()   
+#         if w.task=="Mobile marketing":
+#             w.file_2=client.mm_file
+#             w.target=target
+#             w.save()  
+#         if w.task=="Video Marketing":
+#             w.file_2=client.vm_file
+#             w.target=target
+#             w.save() 
+#         if w.task=="SMO":
+#             w.file_2=client.smo_file
+#             w.target=target
+#             w.save() 
+#         if w.task=="Leads Collection":
+#             w.file_2=client.lc_file
+#             w.target=target
+#             w.save()            
+#         w=Work.objects.latest('id')
+#         for i in array:
+#             b=user_registration.objects.get(department="Digital Marketing Executive",fullname=i)
+#             c=work_asign(work_id=w.id,exe_name_id=b.id,client_name_id=client.id)
+#             c.save()
+#         return HttpResponse({"message": "success"})
 
 def tl_view_work_asign_client(request):
     ids=request.session['userid']
@@ -6962,18 +6987,27 @@ def tl_workprogress_monthly(request):
     usr = user_registration.objects.get(id=ids)
     exe=user_registration.objects.filter(department='Digital Marketing Executive',tl_id=ids)
     exe_ids = [exe.id for exe in exe]
-    prgs=progress_report.objects.filter(user_id__in=exe_ids)
+    prgs=progress_report.objects.filter(user_id__in=exe_ids,status=1).order_by('-id')
     return render(request,'team_lead/tl_workprogress_monthly.html',{'prgs':prgs,"usr":usr,})
 
 def tl_progress_report_monthly(request,pk):
     ids=request.session['userid']
     usr = user_registration.objects.get(id=ids)
     work=progress_report.objects.get(id=pk)
+    sm = Smo_socialmedia.objects.filter(smo_work=work.work.id,smo_start_date=work.start_date,smo_end_date=work.end_date)
     try:
         prv_work=progress_report.objects.filter(work_id=work.id).order_by('-end_date')[0]
     except:
         prv_work=None
-    return render(request,'team_lead/tl_progress_report_monthly.html',{'work':work,"usr":usr,"prv_work":prv_work})
+    return render(request,'team_lead/tl_progress_report_monthly.html',{'work':work,"usr":usr,"prv_work":prv_work,"sm":sm})
+    # ids=request.session['userid']
+    # usr = user_registration.objects.get(id=ids)
+    # work=progress_report.objects.get(id=pk)
+    # try:
+    #     prv_work=progress_report.objects.filter(work_id=work.id).order_by('-end_date')[0]
+    # except:
+    #     prv_work=None
+    # return render(request,'team_lead/tl_progress_report_monthly.html',{'work':work,"usr":usr,"prv_work":prv_work})
 
 def tl_flt_progress_monthly(request):
     ids=request.session['userid']
@@ -6981,13 +7015,24 @@ def tl_flt_progress_monthly(request):
     st_dt=request.POST.get('str_dt')
     en_dt=request.POST.get('end_dt')
   
-    pr_work=progress_report.objects.filter(start_date__gte=st_dt,start_date__lte=en_dt)
+    pr_work=progress_report.objects.filter(start_date__gte=st_dt,start_date__lte=en_dt,status=1)
     context={
         "usr":usr,
         "prgs":pr_work
 
     }
     return render(request, 'team_lead/tl_workprogress_monthly.html',context)
+
+def tl_month_performance(request,wid):
+    ids=request.session['userid']
+    usr = user_registration.objects.get(id=ids)
+    print(wid)
+    # work=Work.objects.get(id=wid)
+    # ex_name = work_asign.objects.get(work=work).exe_name.fullname
+    wp = perfomance.objects.get(client_work_id=wid,status=1)
+    percentage_str = wp.week_perfomance
+    percentage = float(percentage_str.rstrip('%'))
+    return render(request,'team_lead/tl_month_performance.html',{"usr":usr,"wp":wp,"percentage":percentage})
 
 # ----------------------
 def tl_smo_exe(request):

@@ -812,12 +812,33 @@
           <div class="row mt-3">
            
               {% csrf_token %}
-            <div class="col-md-4">
-              {% for j in tls %}
-              
-          <input type="checkbox" id="myCheckbox" name="check1" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
+              <div class="col-md-4">
+                {% for j in tls %}
+                {% if works %}
+                    {% for w in works %}
+                        {% if j.id == w.tl_id %}
+                            {% if w.task != client.seo %}
+  
+                              <input type="checkbox" id="myCheckbox" name="check1" value="{{j.fullname}}">
+                              <label for="myCheckbox">{{j.fullname}}</label><br>
+  
+                            {% endif %}
+                        {% else %}
+                            
+                          <input type="checkbox" id="myCheckbox" name="check1" value="{{j.fullname}}">
+                          <label for="myCheckbox">{{j.fullname}}</label><br>
+  
+                        {% endif %}
+                    {% endfor %}
+  
+                {% else %}
+  
+                    <input type="checkbox" id="myCheckbox" name="check1" value="{{j.fullname}}">
+                    <label for="myCheckbox">{{j.fullname}}</label><br>
+                
+                {% endif %}
+  
+                {% endfor %}
            </div> 
           
       </div>
@@ -843,9 +864,31 @@
               {% csrf_token %}
             <div class="col-md-4">
               {% for j in tls %}
-          <input type="checkbox" id="myCheckbox" name="check2" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
+              {% if works %}
+                  {% for w in works %}
+                      {% if j.id == w.tl_id %}
+                          {% if w.task != client.smm %}
+
+                            <input type="checkbox" id="myCheckbox" name="check2" value="{{j.fullname}}">
+                            <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                          {% endif %}
+                      {% else %}
+                          
+                        <input type="checkbox" id="myCheckbox" name="check2" value="{{j.fullname}}">
+                        <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                      {% endif %}
+                  {% endfor %}
+
+              {% else %}
+
+                  <input type="checkbox" id="myCheckbox" name="check2" value="{{j.fullname}}">
+                  <label for="myCheckbox">{{j.fullname}}</label><br>
+              
+              {% endif %}
+
+              {% endfor %}
            </div> 
            
           
@@ -872,9 +915,31 @@
               {% csrf_token %}
             <div class="col-md-4">
               {% for j in tls %}
-          <input type="checkbox" id="myCheckbox" name="check3" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
+              {% if works %}
+                  {% for w in works %}
+                      {% if j.id == w.tl_id %}
+                          {% if w.task != client.sem %}
+
+                            <input type="checkbox" id="myCheckbox" name="check3" value="{{j.fullname}}">
+                            <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                          {% endif %}
+                      {% else %}
+                          
+                        <input type="checkbox" id="myCheckbox" name="check3" value="{{j.fullname}}">
+                        <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                      {% endif %}
+                  {% endfor %}
+
+              {% else %}
+
+                  <input type="checkbox" id="myCheckbox" name="check3" value="{{j.fullname}}">
+                  <label for="myCheckbox">{{j.fullname}}</label><br>
+              
+              {% endif %}
+
+              {% endfor %}
            </div> 
           
       </div>
@@ -899,9 +964,31 @@
               {% csrf_token %}
             <div class="col-md-4">
               {% for j in tls %}
-          <input type="checkbox" id="myCheckbox" name="check4" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
+              {% if works %}
+                  {% for w in works %}
+                      {% if j.id == w.tl_id %}
+                          {% if w.task != client.em %}
+
+                            <input type="checkbox" id="myCheckbox" name="check4" value="{{j.fullname}}">
+                            <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                          {% endif %}
+                      {% else %}
+                          
+                        <input type="checkbox" id="myCheckbox" name="check4" value="{{j.fullname}}">
+                        <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                      {% endif %}
+                  {% endfor %}
+
+              {% else %}
+
+                  <input type="checkbox" id="myCheckbox" name="check4" value="{{j.fullname}}">
+                  <label for="myCheckbox">{{j.fullname}}</label><br>
+              
+              {% endif %}
+
+              {% endfor %}
            </div> 
           
       </div>
@@ -926,9 +1013,31 @@
               {% csrf_token %}
             <div class="col-md-4">
               {% for j in tls %}
-          <input type="checkbox" id="myCheckbox" name="check5" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
+              {% if works %}
+                  {% for w in works %}
+                      {% if j.id == w.tl_id %}
+                          {% if w.task != client.cm %}
+
+                            <input type="checkbox" id="myCheckbox" name="check5" value="{{j.fullname}}">
+                            <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                          {% endif %}
+                      {% else %}
+                          
+                        <input type="checkbox" id="myCheckbox" name="check5" value="{{j.fullname}}">
+                        <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                      {% endif %}
+                  {% endfor %}
+
+              {% else %}
+
+                  <input type="checkbox" id="myCheckbox" name="check5" value="{{j.fullname}}">
+                  <label for="myCheckbox">{{j.fullname}}</label><br>
+              
+              {% endif %}
+
+              {% endfor %}
            </div> 
           
       </div>
@@ -953,10 +1062,32 @@
          
               {% csrf_token %}
                 <div class="col-md-4">
-              {% for j in tls %}
-              <input type="checkbox" id="myCheckbox" name="check6" value="{{j.fullname}}">
-              <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
+                  {% for j in tls %}
+                  {% if works %}
+                      {% for w in works %}
+                          {% if j.id == w.tl_id %}
+                              {% if w.task != client.am %}
+    
+                                <input type="checkbox" id="myCheckbox" name="check6" value="{{j.fullname}}">
+                                <label for="myCheckbox">{{j.fullname}}</label><br>
+    
+                              {% endif %}
+                          {% else %}
+                              
+                            <input type="checkbox" id="myCheckbox" name="check6" value="{{j.fullname}}">
+                            <label for="myCheckbox">{{j.fullname}}</label><br>
+    
+                          {% endif %}
+                      {% endfor %}
+    
+                  {% else %}
+    
+                      <input type="checkbox" id="myCheckbox" name="check6" value="{{j.fullname}}">
+                      <label for="myCheckbox">{{j.fullname}}</label><br>
+                  
+                  {% endif %}
+    
+                  {% endfor %}
            </div> 
            
           
@@ -983,9 +1114,31 @@
               {% csrf_token %}
             <div class="col-md-4">
               {% for j in tls %}
-          <input type="checkbox" id="myCheckbox" name="check7" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
+              {% if works %}
+                  {% for w in works %}
+                      {% if j.id == w.tl_id %}
+                          {% if w.task != client.mm %}
+
+                            <input type="checkbox" id="myCheckbox" name="check7" value="{{j.fullname}}">
+                            <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                          {% endif %}
+                      {% else %}
+                          
+                        <input type="checkbox" id="myCheckbox" name="check7" value="{{j.fullname}}">
+                        <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                      {% endif %}
+                  {% endfor %}
+
+              {% else %}
+
+                  <input type="checkbox" id="myCheckbox" name="check7" value="{{j.fullname}}">
+                  <label for="myCheckbox">{{j.fullname}}</label><br>
+              
+              {% endif %}
+
+              {% endfor %}
            </div> 
            
            
@@ -1012,9 +1165,31 @@
               {% csrf_token %}
             <div class="col-md-4">
               {% for j in tls %}
-          <input type="checkbox" id="myCheckbox" name="check8" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
+              {% if works %}
+                  {% for w in works %}
+                      {% if j.id == w.tl_id %}
+                          {% if w.task != client.vm %}
+
+                            <input type="checkbox" id="myCheckbox" name="check8" value="{{j.fullname}}">
+                            <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                          {% endif %}
+                      {% else %}
+                          
+                        <input type="checkbox" id="myCheckbox" name="check8" value="{{j.fullname}}">
+                        <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                      {% endif %}
+                  {% endfor %}
+
+              {% else %}
+
+                  <input type="checkbox" id="myCheckbox" name="check8" value="{{j.fullname}}">
+                  <label for="myCheckbox">{{j.fullname}}</label><br>
+              
+              {% endif %}
+
+              {% endfor %}
            </div> 
            
       </div>
@@ -1039,9 +1214,31 @@
               {% csrf_token %}
             <div class="col-md-4">
               {% for j in tls %}
-          <input type="checkbox" id="myCheckbox" name="check9" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
+              {% if works %}
+                  {% for w in works %}
+                      {% if j.id == w.tl_id %}
+                          {% if w.task != client.smo %}
+
+                            <input type="checkbox" id="myCheckbox" name="check9" value="{{j.fullname}}">
+                            <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                          {% endif %}
+                      {% else %}
+                          
+                        <input type="checkbox" id="myCheckbox" name="check9" value="{{j.fullname}}">
+                        <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                      {% endif %}
+                  {% endfor %}
+
+              {% else %}
+
+                  <input type="checkbox" id="myCheckbox" name="check9" value="{{j.fullname}}">
+                  <label for="myCheckbox">{{j.fullname}}</label><br>
+              
+              {% endif %}
+
+              {% endfor %}
            </div> 
           
       </div>
@@ -1065,10 +1262,32 @@
           
               {% csrf_token %}
             <div class="col-md-4">
-              {% for j in tls %}
-          <input type="checkbox" id="myCheckbox" name="check10" value="{{j.fullname}}">
-            <label for="myCheckbox">{{j.fullname}}</label><br>
-            {% endfor %}
+              {% for w in works %}
+              {% if works %}
+                  {% for j in tls %}
+                      {% if j.id == w.tl_id %}
+                          {% if w.task != "Leads Collection" %}
+
+                            <input type="checkbox" id="myCheckbox" name="check10" value="{{j.fullname}}">
+                            <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                          {% endif %}
+                      {% else %}
+                          
+                        <input type="checkbox" id="myCheckbox" name="check10" value="{{j.fullname}}">
+                        <label for="myCheckbox">{{j.fullname}}</label><br>
+
+                      {% endif %}
+                  {% endfor %}
+
+              {% else %}
+
+                  <input type="checkbox" id="myCheckbox" name="check10" value="{{j.fullname}}">
+                  <label for="myCheckbox">{{j.fullname}}</label><br>
+              
+              {% endif %}
+
+              {% endfor %}
            </div> 
            
       </div>
@@ -1079,6 +1298,7 @@
 </div>
 <script>
 $(document).on("click","#btn1",function(){
+            console.log("click fn")
             var array = [];
             $("input:checkbox[name=check1]:checked").each(function() {
                 array.push($(this).val());
@@ -1414,7 +1634,7 @@ $(document).on("click","#btn10",function(){
             $("input:checkbox[name=check10]:checked").each(function() {
                 array.push($(this).val());
             });
-    
+    console.log('clicked')
       var form_data = new FormData();
 form_data.append('task', $("#tsk10").text());
 form_data.append('des', $("#des10").val());

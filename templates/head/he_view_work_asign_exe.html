@@ -13,15 +13,26 @@
           <thead>
             <tr>
               <th scope="col" style="color:#6C7293;">Task</th> 
-              <th scope="col" style="color:#6C7293;">AssignedTo</th> 
+              <th scope="col" style="color:#6C7293;">Assigned To </th> 
+              <!-- <th scope="col" style="color:#6C7293;">TL </th> -->
             </tr>
           </thead>
           <tbody id="myTable">
             {% for i in w %}
               <tr>
               <td style="color:white;">{{i.work.task}}</td>
+              {% if i.exe_name %}
               <td style="color:white;">{{i.exe_name.fullname}}</td>
-               
+              {% else %}
+              <td style="color:white;">Not Assigned</td>
+              {% endif %}
+              <!-- <td style="color:white;">
+                {% for u in all_users %}
+                {% if i.tl_id == u.id %}
+                {{u.fullname}}
+                {% endif %}
+                {% endfor %}
+              </td> -->
             </tr>
             {% endfor %}
         </table>
